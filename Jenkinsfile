@@ -1,14 +1,6 @@
 pipeline {
   agent {
-    kubernetes {
-      inheritFrom 'jenkins-agent-pod'
-      yaml '''
-      spec:
-        containers:
-        - name: docker
-          image: docker:dind
-'''
-    }
+    label 'jenkins/jenkins-jenkins-agent'
   }
   stages {
     stage('Build & Push Image') {
